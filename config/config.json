@@ -1,4 +1,6 @@
 {
   "dbURI": "mongodb://127.0.0.1:27017/lms",
-  "secretCode": "My super secret code"
+  "secretCode": "My super secret code",
+  "gmailUser": "",
+  "gmailPassword": ""
 }
