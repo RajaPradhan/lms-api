@@ -1,0 +1,35 @@
+{
+  "name": "lms-api",
+  "version": "1.0.0",
+  "description": "NodeJS APIs for Learning Management System(LMS)",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RajaPradhan/lms-api.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "LMS",
+    "MongoDB"
+  ],
+  "author": "Raja Pradhan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RajaPradhan/lms-api/issues"
+  },
+  "homepage": "https://github.com/RajaPradhan/lms-api#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.11.3",
+    "q": "^1.5.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.24.1"
+  }
+}
