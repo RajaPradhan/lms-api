@@ -35,3 +35,4 @@ process.once('SIGUSR2', () => {
 });
 
 import './users';
+import './course';

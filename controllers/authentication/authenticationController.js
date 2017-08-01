@@ -1,5 +1,5 @@
-import { registerService, loginService } from '../services/authenticationService';
-import { sendVerificationEmail } from '../services/emailService';
+import { registerService, loginService } from '../../services/authentication/authenticationService';
+import { sendVerificationEmail } from '../../services/authentication/emailService';
 //import redisClient from '../models/redis';
 
 const sendJSONResponse = (res, responseObj) => {
@@ -55,11 +55,11 @@ register = (req, res) => {
           mobile: req.body.mobile,
           password: req.body.password
       })
-      .then(function(responseObj) {
+      .then(responseObj => {
           console.log('Promise resolved');
           sendJSONResponse(res, responseObj);
       })
-      .catch(function(responseObj) {
+      .catch(responseObj => {
           console.log('Promise rejected');
           sendJSONResponse(res, responseObj);
       });
@@ -75,10 +75,11 @@ login = (req, res) => {
             email: req.body.email,
             password: req.body.password
         })
-        .then(function(responseObj) {
+        .then(responseObj => {
             console.log('Promise resolved');
             sendJSONResponse(res, responseObj);
-        }).catch(function(responseObj) {
+        })
+        .catch(responseObj => {
             console.log('Promise rejected');
             sendJSONResponse(res, responseObj);
         });

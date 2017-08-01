@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer';
 import xoauth2 from 'xoauth2';
 import q from 'q';
 
-import config from '../config/config.json';
+import config from '../../config/config.json';
 
 export const sendVerificationEmail = (req, verificationId) => {
   const deferred = q.defer();
