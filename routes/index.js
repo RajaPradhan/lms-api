@@ -1,6 +1,7 @@
 import express from 'express';
 
 import { register, login } from '../controllers/authentication/authenticationController';
+
 import {
   getAllCourses,
   getCourseDetailsById,
@@ -9,10 +10,15 @@ import {
   deleteCourseById
 } from '../controllers/course/courseController';
 
+import { courseSearch, facetSearch } from '../controllers/course/searchController';
+
 const router = express.Router();
 
 router.post('/register', register);
 router.post('/login', login);
+
+router.post('/courses/search/facets', facetSearch);
+router.get('/courses/search', courseSearch);
 
 router.get('/courses', getAllCourses);
 router.get('/courses/:id', getCourseDetailsById);

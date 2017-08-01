@@ -7,7 +7,6 @@ import {
 } from '../../services/course/courseService';
 
 const sendJSONResponse = (res, responseObj) => {
-    console.log('responseObj=>', responseObj);
     res.status(responseObj.status);
     res.json(responseObj.jsonResult);
 },
@@ -15,11 +14,9 @@ const sendJSONResponse = (res, responseObj) => {
 getAllCourses = (req, res) => {
   getAllCoursesService()
   .then(responseObj => {
-      console.log('Promise resolved');
       sendJSONResponse(res, responseObj);
   })
   .catch(responseObj => {
-      console.log('Promise rejected');
       sendJSONResponse(res, responseObj);
   });
 },
@@ -32,11 +29,9 @@ getCourseDetailsById = (req, res) => {
   } else {
     getCourseDetailsByIdService(_id)
     .then(responseObj => {
-        console.log('Promise resolved');
         sendJSONResponse(res, responseObj);
     })
     .catch(responseObj => {
-        console.log('Promise rejected');
         sendJSONResponse(res, responseObj);
     });
   }
@@ -53,16 +48,15 @@ addCourse = (req, res) => {
       name: req.body.name,
       desc: req.body.desc,
       category: req.body.category,
+      facets: req.body.facets,
       price: req.body.price,
       offer: req.body.offer,
       batches: req.body.batches.length > 0 ? req.body.batches : []
     })
     .then(responseObj => {
-        console.log('Promise resolved');
         sendJSONResponse(res, responseObj);
     })
     .catch(responseObj => {
-        console.log('Promise rejected');
         sendJSONResponse(res, responseObj);
     });
   }
@@ -78,6 +72,7 @@ updateCourseById = (req, res) => {
         name: req.body.name,
         desc: req.body.desc,
         category: req.body.category,
+        facets: req.body.facets,
         price: req.body.price,
         offer: req.body.offer,
         batches: req.body.batches.length > 0 ? req.body.batches : []
@@ -94,14 +89,12 @@ updateCourseById = (req, res) => {
 
 deleteCourseById = (req, res) => {
   const _id = req.params.id;
-  console.log('_id:' + _id);
   if(!_id) {
       const responseObj = {"status": 404, "jsonResult": {"result": "Id not found"}};
       sendJSONResponse(res, responseObj);
   } else {
       deleteCourseByIdService(_id)
       .then(responseObj => {
-          console.log('responseObj', responseObj);
           sendJSONResponse(res, responseObj);
       })
       .catch(responseObj => {

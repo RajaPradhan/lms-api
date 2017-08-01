@@ -21,9 +21,18 @@ const courseSchema = new mongoose.Schema({
     required: true
   },
 
+  facets: {
+    type: Array,
+    required: true
+  },
+
   pricing: {
     price: Number,
     offer: Number
+  },
+
+  batches: {
+    type: Array
   }
 });
 

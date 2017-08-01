@@ -11,7 +11,6 @@ getAllCourses = () => {
       } else if(!courses) {
           deferred.reject({"status": 404, "jsonResult": {"result": "Courses not found"}});
       } else {
-          console.log('courses =', courses);
           deferred.resolve({"status": 200, "jsonResult": {"result": courses}});
       }
   });
@@ -26,7 +25,6 @@ getCourseDetailsById = _id => {
       } else if(!course) {
           deferred.reject({"status": 404, "jsonResult": {"result": "Course not found"}});
       } else {
-          console.log('course by id: ', course);
           deferred.resolve({"status": 200, "jsonResult": {"result": course}});
       }
   });
@@ -41,9 +39,11 @@ addCourse = (courseDetails) => {
   course.lname = courseDetails.name.toLowerCase();
   course.desc = courseDetails.desc;
   course.category = courseDetails.category;
+  course.facets = courseDetails.facets;
   course.pricing = {price: courseDetails.price, offer: courseDetails.offer};
   course.batches = courseDetails.batches,
   course.lastUpdated = Date.now();
+  console.log(course);
 
   course.save(err => {
     if(err) {
@@ -68,9 +68,11 @@ updateCourseById = (_id, courseDetails) => {
         course.lname = courseDetails.name.toLowerCase();
         course.desc = courseDetails.desc;
         course.category = courseDetails.category;
+        course.facets = courseDetails.facets;
         course.pricing = {price: courseDetails.price, offer: courseDetails.offer};
         course.batches = courseDetails.batches,
         course.lastUpdated = Date.now();
+        console.log(course);
 
         course.save(function(err, course) {
           if(err) {
@@ -92,7 +94,6 @@ deleteCourseById = _id => {
       } else if(!course) {
           deferred.reject({"status": 404, "jsonResult": {"result": "Course not found"}});
       } else {
-          console.log('course by id: ', course);
           deferred.resolve({"status": 200, "jsonResult": {"result": "Course deleted successfully"}});
       }
   });
@@ -103,6 +104,6 @@ export {
   getAllCourses as getAllCoursesService,
   getCourseDetailsById as getCourseDetailsByIdService,
   addCourse as addCourseService,
-  updateCourseById as updateCourseService,
+  updateCourseById as updateCourseByIdService,
   deleteCourseById as deleteCourseByIdService
 };
